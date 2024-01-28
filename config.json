@@ -1,0 +1,51 @@
+{
+  "url": "http://<server>/httptool",
+  "noVerifyCertificate": false,
+  "requestMethod": "POST",
+  "headers": [
+    {
+      "key": "Cache-Control",
+      "value": "no-cache",
+      "literal": true
+    }
+    ],
+  "contentType": "multipart/form-data;charset=utf-8",
+  "parameters": [
+    {
+      "key": "userid",
+      "value": "${0}",
+      "literal": false
+    },
+    {
+      "key": "originalFileName",
+      "value": "${1}",
+      "literal": false
+    },
+    {
+      "key": "counter",
+      "value": "${2}",
+      "literal": false
+    },
+    {
+      "key": "isInstructor",
+      "value": "${3}",
+      "literal": false
+    }
+  ],
+  "fileParameter": "file",
+  "requestBody": null,
+  "jsonResponse": true,
+  "responseTemplate": [
+    "<div style='text-align: left'>",
+    "<p>Resultado</p><pre style='white-space: pre-wrap;'>",
+    "${body}",
+    "User: ${j.userid}",
+    "File name: ${j.file}",
+    "Size: ${j.size}",
+    "Sha256sum: ${j.sha256sum}",
+    "</pre></div>"
+    ],
+  "scoreTemplate": "${j.score}",
+  "defaultScoreOnSuccess": 50,
+  "defaultScoreOnError": 111
+}
